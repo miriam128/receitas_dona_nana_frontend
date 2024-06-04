@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css"
 import api from '../../services/api';
 
-export default function Login() {
+export default function Register() {
 
   const [user, setUser] = useState({ username: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +12,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setIsLoading(true);
+    setLoading(true);
   };
 
   function validateForm() {
@@ -32,10 +32,10 @@ export default function Login() {
     setDesabilitaBotao(true);
     event.preventDefault();
     try {
-      await api.post("/login/", user).then((response) => {
+      await api.post("/register", user).then((response) => {
         //adicionar toast de sucesso
-        localStorage.setItem("username", response.data.username);
-        localStorage.setItem("access_token", response.data.access_token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("access_token", JSON.stringify(response.data.access_token));
         localStorage.setItem("refresh_token", response.data.refresh_token);
         navigate("/");
       });
@@ -50,10 +50,10 @@ export default function Login() {
     <>
       <div className="pink-background">
         <div className="login-white-container">
-          <h4>Login</h4>
+          <h4>Cadastro</h4>
           <Form className="w-100" onSubmit={handleSubmit}>
             <FormGroup className="">
-              <Label className=''>
+              <Label>
                 Nome de usuário
               </Label>
               <Input
@@ -79,10 +79,10 @@ export default function Login() {
                 color='primary'
                 size="lg"
                 type="button"
-                href="/register"
+                href="/login"
                 tag="a"
               >
-                Criar conta
+                Login
               </Button>
 
               <Button
@@ -96,7 +96,6 @@ export default function Login() {
                 {isLoading ? "Carregando…" : "Avançar"}
               </Button>
             </div>
-
           </Form>
         </div>
       </div>
