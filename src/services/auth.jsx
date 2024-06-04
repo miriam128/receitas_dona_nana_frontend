@@ -6,14 +6,15 @@ import api from "../services/api";
 // verifica se tem o token em local storage retornando a página correta ou redireciona para login
 function Auth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const accessToken = localStorage.getItem("access_token");
+  const refreshToken = localStorage.getItem("refresh_token");
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [accessToken, refreshToken]);
 
   const checkAuth = async () => {
-    const accessToken = localStorage.getItem("access_token");
-    const refreshToken = localStorage.getItem("refresh_token");
+    
 
     if (!accessToken || !refreshToken) {
       setIsAuthenticated(false);
