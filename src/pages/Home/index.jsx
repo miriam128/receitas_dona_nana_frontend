@@ -1,4 +1,11 @@
+import AuthenticatedLayout from "../../components/AuthenticatedLayout";
+
 export default function Home(){
-  return(<>
-  <h1>Hello World</h1></>)
+  return(
+    <AuthenticatedLayout>
+      <div>
+        teste
+      </div>
+    </AuthenticatedLayout>
+  );
 }
