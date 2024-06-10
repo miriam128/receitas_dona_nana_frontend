@@ -6,7 +6,7 @@ export default function AuthenticatedLayout({children}) {
   return (
     <>
       <Header />
-      <div>
+      <div className='main'>
         {children}
       </div>
     </>

@@ -1,0 +1,19 @@
+.recipe-details-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-details-image {
+  max-width: 40%;
+}
+
+.recipe-details-description {
+  font-size: large;
+}
+
+.recipe-ingredients-title, .recipe-method-title {
+  font-size: x-large;
+}
