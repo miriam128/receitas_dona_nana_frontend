@@ -66,7 +66,6 @@ export default function RecipeCreate(){
 
   return(
     <AuthenticatedLayout>
-   
       <div className="inner-container">
         <p className="title">Cadastrar Nova Receita</p>
         <Form onSubmit={handleSubmit}>

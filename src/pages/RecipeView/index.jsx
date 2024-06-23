@@ -8,7 +8,7 @@ import { Button } from "reactstrap";
 import DOMPurify from 'dompurify';
 import DeleteButton from "../../components/DeleteButton";
 
-export default function Recipe(){
+export default function RecipeView(){
   let params = useParams();
   const [recipe, setRecipe] = useState({id:0, title:"", image: {name:"", url:""}, description:"", ingredients:"", preparation_method:""});
   const [recipeImage, setRecipeImage] = useState(defaultImageRecipe);
@@ -30,12 +30,13 @@ export default function Recipe(){
     <AuthenticatedLayout>
       <div className="recipe-details-container">
         <div className="d-flex gap-5 mb-3">
+          <Button onClick={() => window.location.href = `/`}>Receitas</Button>
           <Button onClick={() => window.location.href = `/recipe/${recipe.id}/edit`}>Editar</Button>
           <DeleteButton recipeId={recipe.id} />
         </div>
         
         <p className="recipe-title">{recipe.title.toUpperCase()}</p>
-        <img className="recipe-details-image" src={recipe.image ? recipe.image.url : defaultImageRecipe}/>
+        <img className="recipe-details-image" src={recipe.image_url ? recipe.image_url : defaultImageRecipe}/>
         <p className="mt-2 recipe-details-description">{recipe.description}</p>
         <p className="recipe-ingredients-title">INGREDIENTES</p>
         <div className="recipe-ingredients" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(recipe.ingredients) }}></div>

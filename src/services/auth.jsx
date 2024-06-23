@@ -26,6 +26,7 @@ function Auth() {
             refresh: refreshToken,
           });
           localStorage.setItem("access_token", response.data.access);
+          console.log(response)
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(true);

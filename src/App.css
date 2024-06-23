@@ -53,3 +53,13 @@ body {
   text-align: center;
   color: #000000;
 }
+
+.inner-container {
+  max-width: 1280px;
+  width: 80%;
+}
+
+.recipe-details-image {
+  max-width: 500px;
+  max-height: 300px;
+}

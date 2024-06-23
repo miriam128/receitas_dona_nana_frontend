@@ -25,17 +25,19 @@ export default function Home(){
 
   return (
     <AuthenticatedLayout>
-      <Button onClick={() => window.location.href = `/recipe/create`}>Cadastrar receita</Button>
-      <div>
-        {recipes.map((recipe) => (
-            <div className="recipe-container">
-              <p className="recipe-title mt-2">{recipe.title.toUpperCase()}</p>
-              <Link to={"/recipe/"+recipe.id} className="text-decoration-none d-flex justify-content-center">
-                <img className="recipe-image" src={recipe.image ? recipe.image.url : defaultImageRecipe}/>
-              </Link>
-              <p className="mt-2 recipe-description">{recipe.description}</p>
-            </div> 
-        ))}
+      <div className="recipe-details-container">
+        <Button onClick={() => window.location.href = `/recipe/create`}>Cadastrar receita</Button>
+        <div>
+          {recipes.map((recipe) => (
+              <div className="recipe-container">
+                <p className="recipe-title mt-2">{recipe.title.toUpperCase()}</p>
+                <Link to={"/recipe/"+recipe.id} className="text-decoration-none d-flex justify-content-center">
+                  <img className="recipe-details-image" src={recipe.image_url ? recipe.image_url : defaultImageRecipe} title="Clique para editar"/>
+                </Link>
+                <p className="mt-2 recipe-description">{recipe.description}</p>
+              </div> 
+          ))}
+        </div>
       </div>
     </AuthenticatedLayout>
   );
