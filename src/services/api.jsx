@@ -9,7 +9,7 @@ api.interceptors.request.use(config => {
   const token = localStorage.getItem('access_token');
 
   // Check if the request URL does not include /login
-  if (token && !config.url.includes('/login')) {
+  if (token && !config.url.includes('/login') && !config.url.includes('/register')) {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
